@@ -1,14 +1,19 @@
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
+interface ButtonProps {
+  children: React.ReactNode;
+  disabled?: boolean;
+  variant?: ButtonVariant;
+  onClick?: () => void;
+}
+
 export default function Button({
   children,
   disabled,
   variant = "primary",
-}: {
-  children: React.ReactNode;
-  disabled?: boolean;
-  variant?: ButtonVariant;
-}) {
+  onClick
+}: ButtonProps) {
+
   const styles = {
     primary:
       "bg-gradient-to-r from-[#4f6d39] to-[#99D36E] text-white",
@@ -21,6 +26,7 @@ export default function Button({
   return (
     <button
       disabled={disabled}
+      onClick={onClick}
       className={`w-full py-3 rounded-xl text-sm font-medium 
       ${styles[variant]} 
       disabled:opacity-50`}
@@ -29,3 +35,4 @@ export default function Button({
     </button>
   );
 }
+

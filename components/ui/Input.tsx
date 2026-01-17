@@ -5,10 +5,14 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   helperText?: string;
   containerClass?: string;
+  rightIcon?: React.ReactNode;   
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helperText, containerClass = "", ...props }, ref) => {
+  (
+    { label, error, helperText,  containerClass = "", rightIcon, ...props },
+    ref
+  ) => {
     return (
       <div className={containerClass}>
         <label className="block text-sm text-[var(--text-secondary)] font-medium mb-1">
@@ -16,21 +20,41 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {props.required && <span className="text-red-500"> *</span>}
         </label>
 
-        <input
-          ref={ref}
-          className={`w-full bg-white rounded-xl border border-[var(--border-default)] px-3 py-3 pr-10 text-sm
-          ${error ? "border-[var(--border-error)]" : "focus:border-[var(--border-focus)] focus:outline-none"}`}
-          {...props}
-        />
+        <div className="relative">
+          <input
+            ref={ref}
+            className={`
+              w-full bg-white rounded-xl border border-[var(--border-default)]
+              px-3 py-3 pr-10 text-sm
+              ${
+                error
+                  ? "border-[var(--border-error)]"
+                  : "focus:border-[var(--border-focus)] focus:outline-none"
+              }
+            `}
+            {...props}
+          />
+
+          {rightIcon && (
+            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+              {rightIcon}
+            </div>
+          )}
+        </div>
 
         {helperText && !error && (
           <p className="text-xs text-[var(--text-muted)] mt-1">{helperText}</p>
         )}
 
-        {error && <p className="text-xs text-[var(--error)] mt-1">{error}</p>}
+        {error && (
+          <p className="text-xs text-[var(--error)] mt-1">{error}</p>
+        )}
       </div>
     );
   }
 );
 
+Input.displayName = "Input";
 export default Input;
+
+

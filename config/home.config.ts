@@ -1,4 +1,9 @@
 export const homeConfig = {
+  hero: {
+    background: "/images/home-bg.png",
+    title: "Allied Mechanical Solution",
+  },
+
   user: {
     name: "Vir Maheta",
     role: "Inspection Engineer",
@@ -13,11 +18,37 @@ export const homeConfig = {
 
   action: {
     label: "Start New Inspection",
-    route: "/form",
+    route: "/new-inspection",
   },
 
   tabs: [
     { id: "drafts", label: "Drafts", count: 4 },
     { id: "submitted", label: "Submitted", count: 0 },
+  ],
+
+  drafts: [
+    {
+      id: 1,
+      machine: "Bar Cutting Machine",
+      address: "456, Koramangala, Bangalore - 560034",
+      client: "Reliance Industry",
+      date: "Dec 12, 2025",
+    },
+    {
+      id: 2,
+      machine: "Bar Cutting Machine",
+      address: "456, Koramangala, Bangalore - 560034",
+      client: "Reliance Industry",
+      date: "Dec 12, 2025",
+    },
+    {
+      id: 3,
+      machine: "Bar Cutting Machine",
+      address: "456, Koramangala, Bangalore - 560034",
+      client: "Reliance Industry",
+      date: "Dec 12, 2025",
+    },
+ 
+   
   ],
 };

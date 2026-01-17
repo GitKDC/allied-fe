@@ -3,7 +3,7 @@ export default function TabSwitcher (
     active,
     onChange} : any) {
         return (
-            <div className="flex bg-[var(--bg-muted)] rounded-xl p-1">
+            <div className="flex bg-[#e4e4e4] rounded-xl p-1">
                 {tabs.map((t: any) => (
                     <button
                     key={t.id}

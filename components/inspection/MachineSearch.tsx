@@ -1,13 +1,11 @@
 import { GoSearch } from "react-icons/go";
 
-export default function SearchBar({
+export default function MachineSearch({
   value,
   onChange,
-  placeholder,
 }: {
   value: string;
   onChange: (v: string) => void;
-  placeholder: string;
 }) {
   return (
     <div className="relative">
@@ -15,12 +13,8 @@ export default function SearchBar({
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="
-          w-full bg-white rounded-xl pl-10 pr-4 py-3 text-sm
-          shadow-sm border border-[var(--border-default)]
-          focus:outline-none focus:border-[var(--border-focus)]
-        "
+        placeholder="Search Machines"
+        className="w-full bg-white rounded-xl pl-10 pr-4 py-3 text-sm border border-[var(--border-default)]"
       />
     </div>
   );

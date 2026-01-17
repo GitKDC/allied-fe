@@ -1,6 +1,6 @@
-export default function Card ({children} : { children : React.ReactNode}) {
+export default function Card ({children , className = ""} : { children : React.ReactNode, className? : string}) {
     return (
-        <div className="bg-[var(--bg-card)] rounded-2xl p-4 shadow-sm">
+        <div className={`bg-[var(--bg-card)] rounded-2xl p-4 shadow-lg ${className}`}>
             {children}
         </div>
     )
