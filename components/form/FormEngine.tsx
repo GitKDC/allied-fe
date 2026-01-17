@@ -13,6 +13,7 @@ export default function FormEngine({
         <FormSection
           key={idx}
           title={section.title}
+          type={section.type}
           fields={section.fields}
           register={register}
           errors={errors}

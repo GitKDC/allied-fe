@@ -1,16 +1,6 @@
 import ConditionTable from "./ConditionTable";
 import FieldRenderer from "./FieldRenderer";
 
-interface FormSectionProps {
-  title: string;
-  fields: any[];
-  register: any;
-  errors: any;
-  watch: any;
-  type?: any;
-  setValue: any;
-}
-
 export default function FormSection({
   title,
   fields,
@@ -19,27 +9,27 @@ export default function FormSection({
   watch,
   type,
   setValue,
-}: FormSectionProps) {
-  const hasConditionFields = fields.some(f => f.type === "condition");
-  return (
-    <div className="space-y-4">
+}: any) {
 
+  const content = (
+    <>
       {/* Title Rendering */}
       {title && type === "additional-info" ? (
-        <div className="flex items-center gap-3 my-4">
-          <div className="flex-1 h-[1px] bg-[#D0D5DD]" />
-          <p className="text-[16px] font-medium text-[#6f8f4e] whitespace-nowrap">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 h-[1px] bg-[var(--border-default)]" />
+          <p className="text-[15px] font-medium text-[var(--color-primary)] whitespace-nowrap">
             {title}
           </p>
-          <div className="flex-1 h-[1px] bg-[#D0D5DD]" />
+          <div className="flex-1 h-[1px] bg-[var(--border-default)]" />
         </div>
       ) : title ? (
         <h2 className="text-sm font-semibold text-black">{title}</h2>
       ) : null}
 
-      {hasConditionFields ? (
+      {/* Fields */}
+      {type === "condition-table" ? (
         <ConditionTable>
-          {fields.map((field) => (
+          {fields.map((field: any) => (
             <FieldRenderer
               key={field.name}
               field={field}
@@ -52,7 +42,7 @@ export default function FormSection({
         </ConditionTable>
       ) : (
         <div className="space-y-4">
-          {fields.map((field) => (
+          {fields.map((field: any) => (
             <FieldRenderer
               key={field.name}
               field={field}
@@ -64,6 +54,22 @@ export default function FormSection({
           ))}
         </div>
       )}
+    </>
+  );
+
+
+  if (type === "additional-info") {
+    return (
+      <div className="bg-white rounded-2xl shadow-md p-4 space-y-4">
+        {content}
+      </div>
+    );
+  }
+
+  // Normal section
+  return (
+    <div className="space-y-4">
+      {content}
     </div>
   );
 }

@@ -87,7 +87,7 @@ export default function FieldRenderer({
             />
           );
 
-      case "images":
+        case "images":
         return (
           <ImageUploader
             files={watch(field.name) || []}
