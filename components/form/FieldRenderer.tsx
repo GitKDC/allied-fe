@@ -9,6 +9,8 @@ import InlineInput from "@/components/ui/InlineInput";
 import ConditionRow from "./ConditionRow";
 import ImageUploader from "../ui/ImageUploader";
 import SignatureButton from "../ui/SignatureButton";
+import { useState } from "react";
+import SignatureModal from "../ui/SignatureModal";
 
 
 export default function FieldRenderer({
@@ -93,28 +95,63 @@ export default function FieldRenderer({
           />
         );
 
-      case "signature":
+
+      case "signature": {
+        const [open, setOpen] = useState(false);
+        const value = watch(field.name); // this will be the saved base64 image
+
         return (
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-sm text-[var(--text-secondary)] font-medium">
-                {field.label}
-              </p>
-              {field.subLabel && (
-                <p className="text-xs text-[var(--text-muted)]">
-                  {field.subLabel}
+          <>
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm text-[var(--text-secondary)] font-medium">
+                  {field.label}
                 </p>
-              )}
+                {field.subLabel && (
+                  <p className="text-xs text-black">
+                    {field.subLabel}
+                  </p>
+                )}
+              </div>
+
+              {/* Signature Box */}
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="
+                  w-[140px] h-[48px]
+                  border border-[var(--border-default)]
+                  rounded-xl bg-white
+                  flex items-center justify-center
+                  overflow-hidden
+                "
+              >
+                {value ? (
+                  <img
+                    src={value}
+                    alt="signature"
+                    className="max-h-full object-contain"
+                  />
+                ) : (
+                  <span className="text-sm text-[var(--text-muted)]">
+                    Sign here
+                  </span>
+                )}
+              </button>
             </div>
 
-            <button
-              type="button"
-              className="px-4 py-2 h-[48px] w-[138px] border border-[var(--border-default)] bg-[var-(--bg-signCard)] rounded-xl text-sm text-[var(--text-muted)] "
-            >
-              Sign here
-            </button>
-          </div>
+            <SignatureModal
+              open={open}
+              onClose={() => setOpen(false)}
+              onSave={(data) => {
+                setValue(field.name, data);
+                setOpen(false);
+              }}
+            />
+          </>
         );
+      }
+
 
 
     default:
