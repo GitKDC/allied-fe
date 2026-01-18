@@ -172,8 +172,7 @@ localStorage.setItem("inspections", JSON.stringify([...]));
 📝 Submission Notes
 
 Submitted by: Kartik Chaudhari
-GitHub: https://github.com/GitKDC/allied-fe
-Link : 
+GitHub: https://github.com/GitKDC/allied-fe 
 
 Assignment: Frontend task using Next.js + TailwindCSS
 
