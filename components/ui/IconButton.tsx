@@ -1,3 +1,6 @@
+import { FiCamera } from "react-icons/fi";
+
+
 export default function IconButton({
   onClick,
   children,
@@ -15,6 +18,7 @@ export default function IconButton({
         bg-[var(--color-primary-soft)]
         text-[var(--color-primary)]
         border border-[var(--border-default)]
+        cursor-pointer
       "
     >
       {children}

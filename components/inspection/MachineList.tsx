@@ -1,4 +1,5 @@
 import { FaRegFileAlt } from "react-icons/fa";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
 
 interface Machine {
   id: string;
@@ -28,7 +29,8 @@ export default function MachineList({
           <p className="text-sm font-medium text-[var(--text-secondary)]">
             {m.name}
           </p>
-          <FaRegFileAlt className="text-[var(--color-primary)] text-lg" />
+          <HiOutlineDocumentSearch  className="text-[var(--color-primary)] text-lg"/>
+
         </div>
       ))}
     </div>

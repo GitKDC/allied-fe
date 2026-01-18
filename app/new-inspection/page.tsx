@@ -6,6 +6,7 @@ import Screen from "@/components/layout/Screen";
 import MachineSearch from "@/components/inspection/MachineSearch";
 import MachineList from "@/components/inspection/MachineList";
 import { machines } from "@/config/machine.config";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 export default function NewInspectionPage() {
   const router = useRouter();
@@ -24,7 +25,9 @@ export default function NewInspectionPage() {
       <div className="p-4 space-y-4">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <button onClick={() => router.back()} className="text-xl">←</button>
+          <button onClick={() => router.back()} className="text-xl">
+            <MdOutlineArrowBackIos />
+          </button>
           <h1 className="font-semibold text-sm">New Inspection</h1>
         </div>
 

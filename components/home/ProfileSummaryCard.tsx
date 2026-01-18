@@ -27,7 +27,7 @@ export default function ProfileSummaryCard({
         <img
           src={user.avatar}
           alt={user.name}
-          className="h-12 w-12 rounded-full object-cover"
+          className="h-[62px] w-[62px] rounded-full object-cover"
         />
 
         <div>

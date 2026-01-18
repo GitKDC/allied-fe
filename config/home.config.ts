@@ -7,7 +7,7 @@ export const homeConfig = {
   user: {
     name: "Vir Maheta",
     role: "Inspection Engineer",
-    avatar: "/images/user.png",
+    avatar: "/images/engineer.png",
   },
 
   stats: [

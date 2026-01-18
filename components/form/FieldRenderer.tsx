@@ -11,6 +11,7 @@ import ImageUploader from "../ui/ImageUploader";
 import SignatureButton from "../ui/SignatureButton";
 import { useState } from "react";
 import SignatureModal from "../ui/SignatureModal";
+import InputWithScan from "../ui/InputWithScan";
 
 
 export default function FieldRenderer({
@@ -151,6 +152,19 @@ export default function FieldRenderer({
           </>
         );
       }
+
+
+      case "text":
+        if (field.icon === "scan") {
+          return (
+            <InputWithScan
+              label={field.label}
+              placeholder={field.placeholder}
+              error={errors[field.name]?.message}
+              register={register(field.name)}
+            />
+          );
+        }
 
 
 

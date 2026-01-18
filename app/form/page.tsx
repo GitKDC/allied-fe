@@ -8,6 +8,8 @@ import { formConfigMap } from "@/config/forms";
 import SubmitConfirmModal from "@/components/ui/SubmitConfirmModal";
 import { useState } from "react";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { machines } from "@/config/machine.config";
+import Button from "@/components/ui/Button";
 
 export default function FormPage() {
   const router = useRouter();
@@ -17,6 +19,7 @@ export default function FormPage() {
 
   const type = params.get("type") || "";
   const formConfig = formConfigMap[type];
+  const machine = machines.find(m => m.id === type);
 
   const {
     register,
@@ -57,7 +60,7 @@ export default function FormPage() {
               <MdOutlineArrowBackIos />
             </button>
             <h1 className="font-semibold text-sm">
-              {type.replace(/-/g, " ").toUpperCase()}
+              {machine?.name || "Inspection Form"}
             </h1>
           </div>
         </div>
@@ -72,21 +75,28 @@ export default function FormPage() {
         />
 
         {/* Actions */}
-        <div className="flex gap-3 pt-4">
-          <button
-            type="button"
-            className="flex-1 border border-[var(--border-default)] rounded-xl py-3"
-          >
-            Draft
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowSubmitModal(true)}
-            className="flex-1 bg-[var(--color-primary)] text-white rounded-xl py-3"
-          >
-            Submit
-          </button>
+       <div className="flex gap-3 pt-4">
+          <div className="flex-1">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                console.log("Save as draft");
+              }}
+            >
+              Draft
+            </Button>
+          </div>
+
+          <div className="flex-1">
+            <Button
+              variant="primary"
+              onClick={() => setShowSubmitModal(true)}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
+
       </form>
 
       <SubmitConfirmModal
