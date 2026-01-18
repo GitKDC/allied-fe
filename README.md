@@ -31,29 +31,6 @@ This was developed as a **48-hour take-home assignment** following a Figma desig
 
 ---
 
-## 📁 Project Structure
-
-src/
-├─ app/
-│ ├─ login/ # Login UI
-│ ├─ home/ # Home + inspection list
-│ ├─ new-inspection/ # Machine selection
-│ ├─ form/ # Dynamic inspection form
-├─ components/
-│ ├─ ui/ # Reusable UI components
-│ ├─ form/ # Form engine + sections
-│ ├─ layout/ # Layout wrappers (mobile view)
-├─ config/
-│ ├─ machine.config.ts # Machines list
-│ ├─ forms.ts # Inspection form configurations
-├─ lib/
-│ ├─ validators.ts # Zod schemas for validation
-├─ public/
-│ ├─ images/ # Assets (logo, backgrounds)
-
-
-
----
 
 ## 📌 How It Works
 
